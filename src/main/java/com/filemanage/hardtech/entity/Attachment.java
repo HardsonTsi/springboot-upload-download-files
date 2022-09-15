@@ -3,6 +3,7 @@ package com.filemanage.hardtech.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.Lob;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicUpdate
 public class Attachment {
 
     @Id
@@ -22,6 +24,7 @@ public class Attachment {
     private String id;
     private String fileName;
     private String fileType;
+    private String downloadURL;
     @Lob
     private byte[] data;
 

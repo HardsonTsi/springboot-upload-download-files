@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+
 @Service
 public class AttachmentServiceImplImpl implements AttachmentServie {
 
@@ -23,6 +25,7 @@ public class AttachmentServiceImplImpl implements AttachmentServie {
             }
             String fileType = file.getContentType();
             byte[] data = file.getBytes();
+            File fichier = new File(System.getProperty("user.home") + "/Cinema/Images/" + fileName);
             Attachment attachment = new Attachment(fileName, fileType, data);
             return attachmentRepository.save(attachment);
         } catch (Exception e) {
@@ -35,3 +38,4 @@ public class AttachmentServiceImplImpl implements AttachmentServie {
         return attachmentRepository.findById(fileId).orElseThrow(() -> new Exception("File not found with  Id" + fileId));
     }
 }
+    
